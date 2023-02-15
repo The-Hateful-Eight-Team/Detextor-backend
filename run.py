@@ -1,9 +1,9 @@
 import logging
 import os
 
-from app import api
+from app import flask
 
-APP = api.create_app()
+APP = flask.create_app()
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)

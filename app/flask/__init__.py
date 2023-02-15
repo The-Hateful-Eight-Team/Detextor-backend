@@ -1,6 +1,6 @@
 import config
 import connexion
-from app.api import error_handler
+from app.flask import error_handler
 from flask_cors import CORS
 from swagger_ui_bundle import swagger_ui_path
 
