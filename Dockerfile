@@ -40,16 +40,14 @@ RUN curl -sSL https://install.python-poetry.org | python -
 # and install only runtime deps using poetry
 WORKDIR $PYSETUP_PATH
 COPY ./poetry.lock ./pyproject.toml ./
-RUN poetry install --no-root --only main \
-    && pip install torch --extra-index-url https://download.pytorch.org/whl/cpu \
-    && pip install pyhealth \
-    && pip install captum
+RUN poetry install --no-root --only main
 
 FROM python-base as production
 ENV DETEXTOR_ENV=prod
 
 COPY --from=builder-base $VENV_PATH $VENV_PATH
 
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
 
 WORKDIR ./
 COPY . .
@@ -57,5 +55,5 @@ RUN chmod +x /docker-entrypoint.sh
 
 EXPOSE 3000
 ENTRYPOINT /docker-entrypoint.sh $0 $@
-CMD ["gunicorn", "--log-level", "INFO", "-b", ":8296", "-t", "120", "run:APP"]
+CMD ["gunicorn", "--log-level", "INFO", "-b", ":3000", "-t", "120", "run:APP"]
 
