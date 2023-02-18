@@ -28,6 +28,3 @@ class ImageUtilsTest(TestCase):
         image_after_pipeline = decode_base64_to_image(base64_string)
         self.assertEqual(test_image.shape, image_after_pipeline.shape)
         self.assertEqual(test_image.all(), image_after_pipeline.all())
-
-
-
