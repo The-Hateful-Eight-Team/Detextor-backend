@@ -53,7 +53,7 @@ WORKDIR ./
 COPY . .
 RUN chmod +x /docker-entrypoint.sh
 
-EXPOSE 3000
+EXPOSE 80
 ENTRYPOINT /docker-entrypoint.sh $0 $@
-CMD ["gunicorn", "--log-level", "INFO", "-b", ":3000", "-t", "120", "run:APP"]
+CMD ["gunicorn", "--log-level", "INFO", "-b", ":80", "-t", "120", "run:APP"]
 
