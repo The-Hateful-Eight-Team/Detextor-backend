@@ -1,9 +1,9 @@
 from unittest import TestCase
 import os
-from app.core import convert_image_to_text
+from app.core.core import convert_image_to_text
 import cv2
 from tests.utils import test_dir_path
-from app.image_utils import encode_image_to_base64
+from app.core.base64image import encode_image_to_base64
 
 
 class CoreTest(TestCase):

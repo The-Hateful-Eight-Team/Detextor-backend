@@ -3,7 +3,7 @@ from unittest import TestCase
 import os
 import cv2
 
-from app.image_utils import decode_base64_to_image, encode_image_to_base64
+from app.core.base64image import decode_base64_to_image, encode_image_to_base64
 
 
 class ImageUtilsTest(TestCase):

@@ -1,4 +1,4 @@
-from app import core
+from app.core import core
 
 
 def say_hello():
