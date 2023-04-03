@@ -47,7 +47,8 @@ ENV DETEXTOR_ENV=prod
 
 COPY --from=builder-base $VENV_PATH $VENV_PATH
 
-RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  tesseract-ocr -y \
+    && pip install torch --extra-index-url https://download.pytorch.org/whl/cpu
 
 WORKDIR ./
 COPY . .
